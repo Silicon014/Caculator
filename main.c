@@ -1,7 +1,6 @@
 #define STACKSIZE 100
 #include<stdio.h>
 #include<stdlib.h>
-#include<math.h>
 #include<ctype.h>
 #include"binary_tree.h"
 static void title(void);
@@ -30,10 +29,12 @@ void InToPost(char stack[])
 {
 	;
 }
-void ToTree(BinaryTree tree, char source[])
+void ToTree(BinaryTree tree, char Source[])
 {
 	double tmp;
-	BinaryTree stack[STACKSIZE];
+	BinaryTree Stack[STACKSIZE];
+	BinaryTree * stack = Stack;
+	char * source = Source;
 	
 	while (*source != '\0')
 	{
@@ -41,7 +42,7 @@ void ToTree(BinaryTree tree, char source[])
 
 		if (isdigit(*source))
 		{
-			tmp = strtod(source, NULL, 10);
+			tmp = strtod(source, NULL);
 			while (isdigit(*source))
 				source++;
 			t = Create();
@@ -51,7 +52,7 @@ void ToTree(BinaryTree tree, char source[])
 		}
 		else
 		{
-			t = Union(stack - 2, stack - 1);
+			t = Union(*(stack - 2), *(stack - 1));
 			t->element.ch = *source;
 			stack--;
 			*(stack - 1) = t;
@@ -60,7 +61,15 @@ void ToTree(BinaryTree tree, char source[])
 	}
 	tree->left = *stack;
 	tree->element.ch = '+';
-}  
+}
+static double pow(double x, double y)
+{
+	double re = 1;
+
+	for (int i = 0; i < (int)y; ++i)
+		  re *= x;
+	return re;
+}
 double Conclusion(BinaryTree tree)
 {
 	if (tree == NULL)
@@ -113,7 +122,7 @@ char * GetInput(char array[])
 static void Starbar(void)
 {
 	const int Stars = 80;
-	for (int i = 0; i < Stars, ++i)
+	for (int i = 0; i < Stars; ++i)
 		putchar('*');
 	putchar('\n');
 }

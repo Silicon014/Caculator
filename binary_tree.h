@@ -1,3 +1,12 @@
+typedef union elem {
+	char ch;
+	double d;
+	} Elem;
+struct root {
+	Elem element;
+	struct root * left;
+	struct root * right;
+	};
 typedef struct root Root;
 typedef Root * BinaryTree;
 BinaryTree Create(void);	//创建一个空二叉树

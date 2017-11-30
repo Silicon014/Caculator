@@ -1,22 +1,15 @@
 #include<stdio.h>
 #include<stdlib.h>
-typedef union {
-	char ch;
-	int d;
-	double f
-	} Elem;
+#include"binary_tree.h"
 static void eprint(Elem e)
 {
 	fprintf(stderr, "warning: Elem type changed\n");
-	printf("%d", e);
+	printf("%.2f", e.d);
 }
-struct root {
-	Elem element;
-	struct root * left;
-	struct root * right;
-	};
-#include"binary_tree.h"
-
+static int ecompare(Elem e1, Elem e2)
+{
+	return e1.d == e2.d;
+}
 BinaryTree Create(void)
 {
 	BinaryTree tree;
@@ -66,7 +59,7 @@ inline int deep(BinaryTree tree)
 	{
 		int l = deep(tree->left);
 		int r = deep(tree->right);
-		return 1 + (l > r)? l: r;
+		return 1 + ((l > r)? l: r);
 	}
 }
 int Count(BinaryTree tree)
@@ -96,7 +89,7 @@ BinaryTree Find(BinaryTree tree, Elem e)
 {
 	if (tree == NULL)
 		return NULL;
-	if (tree->element == e)
+	if (ecompare(tree->element, e))
 		return tree;
 	else
 	{
