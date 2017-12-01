@@ -22,10 +22,37 @@ void Push(Stack s, Elem e)
 Elem Pop(Stack s)
 {
 	if (IsEmpty(s))
-		;
+	{
+		Elem e;
+		e.d = 0;
+		return e;
+	}
 	else
 	{
 		Elem e = *(s->top);
-		
-		
-
+		--(s->top);
+		return e;
+	}
+}
+Elem Top(Stack s)
+{
+	if (IsEmpty(s))
+	{
+		Elem e;
+		e.d = 0;
+		return e;
+	}
+	else
+	{
+		return *(s->top);
+	}
+}
+int IsEmpty(Stack s)
+{
+	return s->bottom == s->top;
+}
+void DeleteStack(Stack s)
+{
+	free(s->bottom);
+	free(s);
+}

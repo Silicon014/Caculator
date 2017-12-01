@@ -13,3 +13,6 @@ Stack CreateStack(int);
 void MakEmpty(Stack);
 void Push(Stack, Elem);
 Elem Pop(Stack);
+Elem Top(Stack);
+int IsEmpty(Stack);
+void DeleteStack(Stack);
