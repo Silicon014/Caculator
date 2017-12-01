@@ -2,11 +2,11 @@ typedef union node {
 	char ch;
 	double d;
 	} Node;
-typedef Node Elem;
+typedef Node * Elem;
 struct stack {
 	int size;
-	Node * bottom;
-	Node * top;
+	Elem bottom;
+	Elem top;
 	};
 typedef struct stack * Stack;
 Stack CreateStack(int);

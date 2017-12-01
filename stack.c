@@ -11,25 +11,24 @@ Stack CreateStack(int i)
 }
 void MakeEmpty(Stack s)
 {
-	s->bottom = (Node *)malloc(sizeof(Node * s->size));
+	s->bottom = (Elem)malloc(sizeof(Node * s->size));
 	s->top = s->bottom;
 }
 void Push(Stack s, Elem e)
 {
 	++(s->top);
-	*(s->top) = e;
+	*(s->top) = *e;
 }
 Elem Pop(Stack s)
 {
 	if (IsEmpty(s))
 	{
-		Elem e;
-		e.d = 0;
-		return e;
+		return NULL;
 	}
 	else
 	{
-		Elem e = *(s->top);
+		Elem e = (Elem)malloc(sizeof(Node));
+		*e = *(s->top);
 		--(s->top);
 		return e;
 	}
@@ -38,13 +37,11 @@ Elem Top(Stack s)
 {
 	if (IsEmpty(s))
 	{
-		Elem e;
-		e.d = 0;
-		return e;
+		return NULL;
 	}
 	else
 	{
-		return *(s->top);
+		return s->top;
 	}
 }
 int IsEmpty(Stack s)
