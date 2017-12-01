@@ -11,7 +11,7 @@ Stack CreateStack(int i)
 }
 void MakeEmpty(Stack s)
 {
-	s->bottom = (Elem)malloc(sizeof(Node * s->size));
+	s->bottom = (Elem)malloc(sizeof(Node) * s->size);
 	s->top = s->bottom;
 }
 void Push(Stack s, Elem e)

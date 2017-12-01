@@ -10,7 +10,7 @@ struct stack {
 	};
 typedef struct stack * Stack;
 Stack CreateStack(int);
-void MakEmpty(Stack);
+void MakeEmpty(Stack);
 void Push(Stack, Elem);
 Elem Pop(Stack);
 Elem Top(Stack);
